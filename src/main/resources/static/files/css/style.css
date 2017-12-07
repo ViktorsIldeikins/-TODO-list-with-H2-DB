@@ -1,3 +1,14 @@
+body,html{
+	margin:4px 4px;
+}
+html{
+	background-color: #ffebe1;
+}
+
+h1,h3{
+	color: #222e42;
+}
+
 #listOfTasks {
 	border-collapse: collapse;
 	width:100%;
@@ -5,22 +16,77 @@
 
 #listOfTasks th {
 	text-align: left;
-	border: 2px solid #d6882d;
+	border: 2px solid #5c61a8;
+	/*border: 2px solid #c85f3c;*/
 	padding: 8px;
-	background-color: #0001ed;
+	background-color: #a95639;
+	/*background-color: #5c61a8;*/
 	color:#fcffff
 }
+
 #listOfTasks td{
-	border: 1px solid #d6882d;
+	border: 1px solid #5c61a8;
 	padding: 4px;
 }
 
 #listOfTasks tr:hover {
-	background-color: #8efffd
+	background-color: #efe9c4
 }
 
-#listOfTasks input {
-	background-color:#31e227;
-	border-style: groove;
+#listOfTasks input[type=button] {
+	background-color: #ff8a38;
+	color: white;
+	padding: 7px 10px;
+	margin: 2px 2px;
+	border: none;
 	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=text], select {
+	width: 30%;
+	padding: 8px 10px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	width: 30%;
+	background-color: #ff8a38;
+	color: white;
+	padding: 7px 10px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #c76432;
+}
+
+progress {
+	border: #222e42;
+	background: crimson;
+}
+
+progress {
+	color: lightblue;
+}
+
+progress::-webkit-progress-value {
+	background: lightblue;
+}
+
+progress::-webkit-progress-value {
+
+	background: #5c61a8;
+}
+
+progress::-webkit-progress-bar {
+	border: 1px solid #222e42;
+	background: #ffebe1;
 }

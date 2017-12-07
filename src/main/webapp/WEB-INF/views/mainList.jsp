@@ -26,7 +26,7 @@
     <tr>
         <th>Responsible person</th>
         <th>Task</th>
-        <th>Estimated complexity in coffee cups</th>
+        <th>Estimated complexity <br> in coffee cups</th>
         <th>Progress</th>
         <th>Action</th>
     </tr>
@@ -58,21 +58,14 @@
     </c:forEach>
 </table>
 
-<h3>Add new task</h3>
+<h3>Add new task</h3> <span id="generalErrorField" style="color:red"></span>
 <form id="newTaskForm" onsubmit="addTask()">
-    <span id="generalErrorField" style="color:red"></span> <br>
-    <label>
-        Person:
-        <input id="personField" type="text" name="person"/> <span id="personErrorField" style="color:red"> </span>
-    </label> <br>
-    <label>
-        Task:
-        <input id="taskField" type="text" name="task"/> <span id="taskErrorField" style="color:red"> </span>
-    </label> <br>
-    <label>
-        Estimated complexity in coffee cups:
-        <input id="coffeeField" type="text" name="coffee"/> <span id="coffeeErrorField" style="color:red"> </span>
-    </label> <br>
+    <label for="personField"> Person: </label>  <span id="personErrorField" style="color:red"> </span> <br>
+    <input id="personField" type="text" name="person"/> <br>
+    <label for="taskField">Task:</label>  <span id="taskErrorField" style="color:red"> </span> <br>
+    <input id="taskField" type="text" name="task"/> <br>
+    <label for="coffeeField">Estimated complexity in coffee cups: </label> <span id="coffeeErrorField" style="color:red"> </span> <br>
+    <input id="coffeeField" type="text" name="coffee"/> <br>
     <input type="submit"/>
 </form>
 

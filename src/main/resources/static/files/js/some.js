@@ -66,7 +66,7 @@ function addTask() {
                     row.insertCell(4).innerHTML = "<input type=\"button\" value=\"log consumed coffee cup\" " +
                         "onclick=\"logCoffeeCup(this.parentElement.parentElement)\"> \n" +
                         "<input type=\"button\" value=\"Remove task\" " +
-                        "onclick=\"removeTask(this,'${task.getPerson()}','${task.getTask()}' )\">";
+                        "onclick=\"removeTask(this,'"+personField.val()+"','"+taskField.val()+"')\">";
 				}
 			}).fail(() => $("#target").text("...ups....something went wrong")
 			).always(() => {
