@@ -2,10 +2,57 @@ $("#newTaskForm").submit((e) => {
 	e.preventDefault();     //To prevent reloading page when submitting
 });
 
+function flashRow(row) {
+    let oldColor = row.getAttribute("background-color");
+    let newColor = "#a95639";
+    // row.setAttribute("background-color", newColor);
+    row.style.backgroundColor=newColor;
+    let id = setInterval(frame, 200);
+    let amount=0;
+    function frame() {
+        if (amount === 4) {
+            clearInterval(id);
+        } else {
+            amount++;
+            if((amount%2)===0){
+                row.style.backgroundColor=oldColor;
+			}else{
+                row.style.backgroundColor=newColor;
+			}
+        }
+    }
+}
+
+function checkComplexityCell(cell) {
+    if ((cell.innerText === "0") || (cell.innerText === "")) {
+        cell.innerHTML = "no estimate";
+    } else {
+        let k;
+        const amount = parseInt(cell.innerText);
+        for (k = 0; (k < amount) && (k < 5); k++) {
+            cell.innerHTML += " <i style=\"font-size:20px\" class=\"fa\">&#xf0f4;</i>";
+        }
+        if (k < amount) {
+            cell.innerHTML += " +";
+        }
+    }
+}
+
+function initComplexity() {
+    let listOfRows = document.getElementsByTagName("tr");
+    for (let i = 1; i < listOfRows.length; i++) {
+        //TODO find better way to find that cell
+        checkComplexityCell(listOfRows[i].getElementsByTagName("td")[3]);
+    }
+}
+
+initComplexity();
+
 //checks if same task exists for the same person
 function duplicateTask(person, task) {
 	const allTasks = document.getElementById("listOfTasks").getElementsByClassName("taskRow");
 	for (let i = 0; i < allTasks.length; i++) {
+        //TODO find better way to find that cell
 		if ((allTasks[i].getElementsByTagName("td")[1].innerHTML === task) && (allTasks[i].getElementsByTagName("td")[0].innerHTML === person)) {
 			return true;
 		}
@@ -55,15 +102,13 @@ function addTask() {
 					const personField = $("#personField");
 					const taskField = $("#taskField");
                     const priorityField = $("#priorityField");
-					let coffeeField = $("#coffeeField");
-					if ((coffeeField.val() === "") || (coffeeField.val() === "0")) {
-						coffeeField.val("no estimate");
-					}
+                    const coffeeField = $("#coffeeField");
 					row.setAttribute("class", "taskRow");
 					row.insertCell(0).innerHTML = personField.val();
 					row.insertCell(1).innerHTML = taskField.val();
                     row.insertCell(2).innerHTML = priorityField.val();
                     row.insertCell(3).innerHTML = coffeeField.val();
+                    checkComplexityCell(row.getElementsByTagName("td")[3]);
                     row.insertCell(4).innerHTML = "<progress value=0 max=" + coffeeField.val() + "></progress>";
                     row.insertCell(5).innerHTML = "<input type=\"button\" value=\"log consumed coffee cup\" " +
                         "onclick=\"logCoffeeCup(this.parentElement.parentElement)\"> \n" +
@@ -94,7 +139,14 @@ function logCoffeeCup(row) {
             }
         }).done((result) => {
             if (result === "success") {
-                row.getElementsByTagName("progress")[0].setAttribute("value", usedCoffeeCups);
+            	let progressBar=row.getElementsByTagName("progress")[0];
+                progressBar.setAttribute("value", usedCoffeeCups);
+                console.log("checking if finished task");
+                console.log(progressBar.getAttribute("value")+" <--> "+ progressBar.getAttribute("max"));
+				if(progressBar.getAttribute("value")===progressBar.getAttribute("max")){
+					console.log("about to flash");
+					flashRow(row);
+				}
             }
         })
     })

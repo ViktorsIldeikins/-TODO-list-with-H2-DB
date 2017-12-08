@@ -18,7 +18,7 @@
 <body>
 
 
-<h1>This is TODO List</h1>
+<h1>TODO</h1>
 
 <div id="target"></div>
 
@@ -36,17 +36,8 @@
             <td id="personCell">${task.getPerson()}</td>
             <td id="taskCell">${task.getTask()}</td>
             <td id="priorityCell">${task.getPriority()}</td>
-            <td>
-                <c:set value="${task.getAmountOfCoffeeCups()}" var="coffee"/>
-                <c:choose>
-                    <c:when test="${coffee == 0 }" >
-                        no estimate
-                    </c:when>
-                    <c:otherwise>
-                        ${task.getAmountOfCoffeeCups()}
-                    </c:otherwise>
-                </c:choose>
-                <i style="font-size:20px" class="fa">&#xf0f4;</i>
+            <td id="complexityCell">
+                ${task.getAmountOfCoffeeCups()}
             </td>
             <td>
                 <progress value="${task.getUsedCoffeeCups()}" max="${task.getAmountOfCoffeeCups()}"></progress>
