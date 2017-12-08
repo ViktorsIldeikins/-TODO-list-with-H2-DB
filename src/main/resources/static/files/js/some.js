@@ -54,6 +54,7 @@ function addTask() {
 					let row = table.insertRow(table.rows.length);
 					const personField = $("#personField");
 					const taskField = $("#taskField");
+                    const priorityField = $("#priorityField");
 					let coffeeField = $("#coffeeField");
 					if ((coffeeField.val() === "") || (coffeeField.val() === "0")) {
 						coffeeField.val("no estimate");
@@ -61,9 +62,10 @@ function addTask() {
 					row.setAttribute("class", "taskRow");
 					row.insertCell(0).innerHTML = personField.val();
 					row.insertCell(1).innerHTML = taskField.val();
-					row.insertCell(2).innerHTML = coffeeField.val();
-                    row.insertCell(3).innerHTML = "<progress value=0 max=" + coffeeField.val() + "></progress>";
-                    row.insertCell(4).innerHTML = "<input type=\"button\" value=\"log consumed coffee cup\" " +
+                    row.insertCell(2).innerHTML = priorityField.val();
+                    row.insertCell(3).innerHTML = coffeeField.val();
+                    row.insertCell(4).innerHTML = "<progress value=0 max=" + coffeeField.val() + "></progress>";
+                    row.insertCell(5).innerHTML = "<input type=\"button\" value=\"log consumed coffee cup\" " +
                         "onclick=\"logCoffeeCup(this.parentElement.parentElement)\"> \n" +
                         "<input type=\"button\" value=\"Remove task\" " +
                         "onclick=\"removeTask(this,'"+personField.val()+"','"+taskField.val()+"')\">";

@@ -7,17 +7,27 @@ public class Task {
 	private int id;
 	private String person;
 	private String task;
+	private String priority;
 	private int amountOfCoffeeCups;
 	private int usedCoffeeCups;
 
 	public Task() {
 	}
 
-	public Task(String person, String task, int amountOfCoffeeCups, int usedCoffeeCups) {
+	public Task(String person, String task, String priority, int amountOfCoffeeCups, int usedCoffeeCups) {
 		this.person = person;
 		this.task = task;
+		this.priority = priority;
 		this.amountOfCoffeeCups = amountOfCoffeeCups;
 		this.usedCoffeeCups = usedCoffeeCups;
+	}
+
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
 	}
 
 	public int getUsedCoffeeCups() {
@@ -58,6 +68,7 @@ public class Task {
 				"id=" + id +
 				", person='" + person + '\'' +
 				", task='" + task + '\'' +
+				", priority='" + priority + '\'' +
 				", amountOfCoffeeCups=" + amountOfCoffeeCups +
 				", usedCoffeeCups=" + usedCoffeeCups +
 				'}';

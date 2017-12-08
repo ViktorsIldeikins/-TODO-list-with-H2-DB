@@ -16,7 +16,7 @@ public interface TaskMapper {
 	@Select("select * from tasks")
 	List<Task> getAll();
 
-	@Insert("insert into tasks(person,task,amountOfCoffeeCups) values(#{person},#{task},#{amountOfCoffeeCups})")
+	@Insert("insert into tasks(person,task,priority,amountOfCoffeeCups) values(#{person},#{task},#{priority},#{amountOfCoffeeCups})")
 	@SelectKey(statement = "Select Last_Insert_id()", keyProperty ="id", before = false, resultType = Integer.class)
 	void insert(Task task);
 
@@ -31,6 +31,7 @@ public interface TaskMapper {
 			"    id int(10) NOT NULL AUTO_INCREMENT,\n" +
 			"    person varchar(100) NOT NULL,\n" +
 			"    task VARCHAR (100) NOT NULL,\n" +
+			"    priority VARCHAR (100) NOT NULL,\n" +
 			"    amountOfCoffeeCups int(10) DEFAULT 0,\n" +
 			"    usedCoffeeCups int(10) DEFAULT 0,\n" +
 			"    PRIMARY KEY (id)\n" +

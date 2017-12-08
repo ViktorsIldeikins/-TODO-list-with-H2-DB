@@ -34,7 +34,7 @@ h1,h3{
 }
 
 #listOfTasks input[type=button] {
-	background-color: #ff8a38;
+	background-color: #f5883a;
 	color: white;
 	padding: 7px 10px;
 	margin: 2px 2px;
@@ -55,7 +55,7 @@ input[type=text], select {
 
 input[type=submit] {
 	width: 30%;
-	background-color: #ff8a38;
+	background-color: #f5883a;
 	color: white;
 	padding: 7px 10px;
 	margin: 8px 0;
@@ -69,20 +69,14 @@ input[type=submit]:hover {
 }
 
 progress {
-	border: #222e42;
-	background: crimson;
-}
-
-progress {
 	color: lightblue;
 }
 
-progress::-webkit-progress-value {
-	background: lightblue;
+progress {
+	border: #222e42;
 }
 
 progress::-webkit-progress-value {
-
 	background: #5c61a8;
 }
 

@@ -29,16 +29,16 @@ public class TaskRepository {
 	}
 
 	public void removeTask(String person, String task) {
-		taskMapper.remove(new Task(person,task,0,0));
+		taskMapper.remove(new Task(person,task,"",0,0));
 	}
 
-	public void addTask(String person, String task, int amountOfCoffeeCups) {
-		taskMapper.insert(new Task(person,task,amountOfCoffeeCups,0));
+	public void addTask(String person, String task, String priority ,int amountOfCoffeeCups) {
+		taskMapper.insert(new Task(person,task,priority,amountOfCoffeeCups,0));
 	}
 
 	//TODO implement editing of #amountOfCoffeeCups
 	public void updateTask(String person,String task, int usedCoffeeCups){
-		taskMapper.update(new Task(person,task,0,usedCoffeeCups));
+		taskMapper.update(new Task(person,task,"",0,usedCoffeeCups));
 	}
 
 	@Override
